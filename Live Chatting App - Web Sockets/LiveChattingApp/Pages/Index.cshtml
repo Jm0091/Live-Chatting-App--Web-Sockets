@@ -1,0 +1,107 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aspnet-signalr/1.1.4/signalr.min.js" integrity="sha512-hqwtOj6waHZZoLRoJoLn0tq34JS97tR1QmhM69uvyrt3LVBiR1o0xeOVAskjUFL1L1fahQH2W7IdcMaFbqCEaw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Arvo&family=Comforter&display=swap" rel="stylesheet">
+
+<style>
+    #body {
+        background-color: black;
+        color: white;
+        font-family: 'Arvo', serif;
+    }
+    #title {
+        padding-top: 80px;
+    }
+    #title h1 {
+        color: lightseagreen;
+        text-shadow: 2px 2px white;
+        font-family: 'Comforter', cursive;
+        font-size: 100px;
+    }
+    #userForm {
+        margin-top: 30px;
+        border: 1px solid gray;
+        padding: 20px;
+    }
+    #userForm label {
+        color: lightseagreen;
+        font-size: 20px;
+    }
+    #userForm input{
+        border: 2px solid orange;
+        color: darkorange;
+        margin-left: 10px;
+    }
+    #msgsArea {
+        border: 2px solid orange;
+        margin-bottom: 70px;
+    }
+    #msgsArea ul {
+        color: black;
+    }
+    #msgsArea ul li {
+        color: black;
+    }
+    .userLi {
+        color: black;
+    }
+    .msgLi {
+        color: black;
+    }
+    .system {
+        background-color: gray;
+        color: white;
+    }
+    .user {
+        float: right;
+        background-color: lightblue;
+        color: black;
+    }
+    .error {
+        background-color: midnightblue;
+        color: red;
+    }
+    .members {
+        float: left;
+        background-color: lightgreen;
+        color: black;
+    }
+    .oldRecords {
+        background-color: lightgray;
+        color: black;
+    }
+</style>
+<div class="container-fluid" id="body">
+
+    <div class="text-center" id="title">
+        <h1 class="display-4">Chat App</h1>
+    </div>
+
+    <div>
+        <form id="userForm">
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label" for="username">Username: </label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control-plaintext" id="username" placeholder="bob" >
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label" for="message">Message: </label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control-plaintext" id="message" placeholder="Hello" >
+                </div>
+            </div>
+            <button type="submit" id="msgSend" class="btn btn-primary">Send</button>
+        </form>
+    </div>
+
+    <div class="border mt-5">
+        <ul id="msgsArea" class="list-group overflow-auto" style="max-height:500px;height:400px;"> </ul>
+    </div>
+
+</div>
